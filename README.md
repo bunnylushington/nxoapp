@@ -26,7 +26,10 @@ The helper script `bin/AppName` provides a few useful commands
 
 Note that `start` does not start the Erlang application.  In
 non-development environments it is preferable to create a release and
-run that in the foreground.  To start the rebar3 shell:
+run that in the foreground.  That's left as an exercise to the reader
+(although see the sample Dockerfile included).
+
+To start the rebar3 shell for development:
 
 ``` shell
 $ bin/AppName start
@@ -45,7 +48,10 @@ Release Building
 -------
 
 A sample Dockerfile is included for convenience.  This is only a
-starting point!
+starting point!  In fact, it's not going to run as-is:
+`config/sys.config.src` requires at least one environment variable to
+be set.  How you do that is really based on what makes sense in your
+environment.
 
 Author
 -----
