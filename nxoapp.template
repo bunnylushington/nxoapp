@@ -1,0 +1,24 @@
+%% -*- mode: erlang -*-
+
+{description, "OTP Application structure appropriate for Docker development"}.
+
+{variables,
+ [
+  {name, "my_nxoapp", "Name of the application"},
+  {description, "A Docker enabled OTP application.", "App description"},
+  {docker_format, "{{.ID}}"}
+ ]}.
+
+{dir,                            "{{name}}"}.
+{template, "rebar.config",       "{{name}}/rebar.config"}.
+{file,     ".gitignore",         "{{name}}/.gitignore"}.
+{template, "docker-compose.yml", "{{name}}/docker-compose.yml"}.
+
+{dir,                 "{{name}}/bin"}.
+{template, "bin/ctl", "{{name}}/bin/{{name}}"}.
+{chmod,               "{{name}}/bin/{{name}}", 8#755}.
+
+{dir,                            "{{name}}/src"}.
+{template, "src/nxoapp.app.src", "{{name}}/src/{{name}}.app.src"}.
+{template, "src/nxoapp_sup.erl", "{{name}}/src/{{name}}_sup.erl"}.
+{template, "src/nxoapp_app.erl", "{{name}}/src/{{name}}_app.erl"}.

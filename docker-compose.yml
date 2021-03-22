@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER={{name}}_user
+      - POSTGRES_PASSWORD={{name}}_pass
+      - POSTGRES_DB={{name}}_db
+    volumes:
+      - {{name}}_pgdata:/var/lib/postgresql/data
+    networks:
+      - {{name}}net
+
+  fe:
+    image: erlang:23
+    volumes:
+      - ".:/{{name}}"
+    networks:
+      - {{name}}net
+    depends_on:
+      - db
+    entrypoint:
+      - /bin/bash
+    tty: true
+    stdin_open: true
+    working_dir: /{{name}}
+
+volumes:
+  {{name}}_pgdata:
+
+networks:
+  {{name}}net:
