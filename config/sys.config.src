@@ -1,0 +1,5 @@
+%% -*- mode: erlang -*-
+
+[
+ { {{name}}, [{development_mode, ${DEVELOPMENT_MODE}}] }
+].

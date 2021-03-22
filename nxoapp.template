@@ -13,6 +13,14 @@
 {template, "rebar.config",       "{{name}}/rebar.config"}.
 {file,     ".gitignore",         "{{name}}/.gitignore"}.
 {template, "docker-compose.yml", "{{name}}/docker-compose.yml"}.
+{template, "Dockerfile",         "{{name}}/Dockerfile"}.
+
+{dir,                               "{{name}}/config"}.
+{template, "config/vm.args",        "{{name}}/config/vm.args"}.
+{template, "config/sys.config.src", "{{name}}/config/sys.config.src"}.
+
+{dir,                         "{{name}}/environment"}.
+{file, "environment/dev.env", "{{name}}/environment/dev.env"}.
 
 {dir,                 "{{name}}/bin"}.
 {template, "bin/ctl", "{{name}}/bin/{{name}}"}.
